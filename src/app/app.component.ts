@@ -14,6 +14,7 @@ currentSection: any;
 toggleModalSignal($event: MouseEvent) {
 throw new Error('Method not implemented.');
 }
+
   title = 'Acortador-URL';
 
 }
