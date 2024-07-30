@@ -37,3 +37,6 @@
   margin-right: 15rem;
 }
 
+.justify-start {
+  justify-content: flex-start !important;
+}

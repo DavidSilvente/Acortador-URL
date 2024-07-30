@@ -1,4 +1,91 @@
-<div *ngFor="let url of savedUrls">
-  <p>Original URL: {{ url.originalUrl }}</p>
-  <p>Short URL: <a [href]="url.shortUrl" target="_blank">{{ url.shortUrl }}</a></p>
+<div class="contenedor justify-start">
+  <h1 class="text-4xl py-8">Mis URLs</h1>
+
+  <div class="relative overflow-x-auto">
+    <table
+      class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+    >
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">Original URL</th>
+          <th scope="col" class="px-6 py-3">Short URL</th>
+          <th scope="col" class="px-6 py-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let url of savedUrls"
+          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+        >
+          <td
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            <a
+              class="text-black-600"
+              >{{ url.originalUrl }}</a
+            >
+          </td>
+          <td class="px-6 py-4">
+            <a
+              [href]="'http://localhost:3000/' + url.shortUrl"
+              target="_blank"
+              class="text-blue-600 hover:underline"
+              >{{ url.shortUrl }}</a
+            >
+          </td>
+          <td class="px-6 py-4 text-right">
+            <div class="relative">
+              <button
+                (click)="toggleDropdown(url)"
+                class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div
+                *ngIf="dropdownUrl === url.shortUrl"
+                class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 rounded shadow-lg z-10"
+              >
+                <ul>
+                  <li>
+                    <button
+                      (click)="copyUrl(url)"
+                      class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    >
+                      Copiar URL
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      (click)="deleteUrl(url)"
+                      class="block w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    >
+                      Eliminar URL
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="savedUrls.length === 0">
+          <td colspan="3" class="px-6 py-4 text-center">No URLs saved.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
