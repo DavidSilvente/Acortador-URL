@@ -22,8 +22,8 @@ export class UrlShortenerComponent {
         (response) => {
           this.shortUrl = response.shortUrl;
           this.router.navigate(['/acortado'], { queryParams: { shortUrl: this.shortUrl } });
+          this.urlShortenerService.saveUrl(this.shortUrl!, this.longUrl);
 
-          // Manejar la URL acortada como necesites, por ejemplo mostrarla
         },
         (error) => {
           console.error('Error acortando la URL', error);

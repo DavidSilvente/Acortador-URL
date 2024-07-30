@@ -1,1 +1,4 @@
-<p>urls works!</p>
+<div *ngFor="let url of savedUrls">
+  <p>Original URL: {{ url.originalUrl }}</p>
+  <p>Short URL: <a [href]="url.shortUrl" target="_blank">{{ url.shortUrl }}</a></p>
+</div>

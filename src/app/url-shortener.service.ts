@@ -15,8 +15,15 @@ export class UrlShortenerService {
     return this.http.post<any>(`${this.apiUrl}/shorten`, { originalUrl });
   }
 
-  getOriginalUrl(shortUrl: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${shortUrl}`);
+  saveUrl(shortUrl: string, originalUrl: string): void {
+    const urls = this.getUrls();
+    urls.push({ shortUrl, originalUrl });
+    localStorage.setItem('shortUrls', JSON.stringify(urls));
+  }
+
+  getUrls(): { shortUrl: string, originalUrl: string }[] {
+    const urls = localStorage.getItem('shortUrls');
+    return urls ? JSON.parse(urls) : [];
   }
 
 }
