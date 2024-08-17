@@ -8,8 +8,17 @@ import { NavigationService } from '../navigation.service';
 })
 export class PaginaEnlaceAcortadoComponent implements OnInit {
   shortUrl: string | null = null;
+  showQrCode: boolean = false;
 
   constructor(private route: ActivatedRoute, private navigationService: NavigationService) {}
+
+  generateQrCode(): void {
+    if (this.shortUrl) {
+      this.showQrCode = true; // Muestra el código QR
+    } else {
+      
+    }
+  }
 
   goToAcortado() {
     this.navigationService.navigateToRoute('');
@@ -20,4 +29,7 @@ export class PaginaEnlaceAcortadoComponent implements OnInit {
       this.shortUrl = params['shortUrl'];
     });
   }
+
+
+
 }

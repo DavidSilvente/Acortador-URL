@@ -15,6 +15,10 @@ import { FooterComponent } from './footer/footer.component';
 import { AyudaComponent } from './ayuda/ayuda.component';
 import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { UrlsComponent } from './urls/urls.component';
+import { QrCodeModule } from './qr-code.module';
+import { QrCodeComponent } from './qr-code/qr-code.component';
+
+
 
 @NgModule({
   declarations: [
@@ -29,12 +33,14 @@ import { UrlsComponent } from './urls/urls.component';
     AyudaComponent,
     EstadisticasComponent,
     UrlsComponent,
+    QrCodeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    QrCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

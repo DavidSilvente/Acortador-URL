@@ -4,11 +4,19 @@
   </div>
 
   <div class="form text-align">
-      <div class="mb-5">
-        <app-enlace [url]="'http://localhost:3000/' + shortUrl"></app-enlace>
-      </div>
-      <div class="display-flex justify-evenly margin-button">
-        <button
+    <div class="mb-5">
+      <app-enlace [url]="'http://localhost:3000/' + shortUrl"></app-enlace>
+    </div>
+
+    <div *ngIf="showQrCode" class="mb-5" style="display: flex; justify-content: center;">
+      <app-qr-code
+        [shortUrl]="'http://localhost:3000/' + shortUrl"
+      ></app-qr-code>
+    </div>
+
+    <div class="display-flex justify-evenly margin-button">
+      <button
+        (click)="generateQrCode()"
         type="submit"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
       >
@@ -21,6 +29,6 @@
       >
         Acortar URL
       </button>
-      </div>
+    </div>
   </div>
 </div>
