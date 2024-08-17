@@ -3,7 +3,7 @@
     <app-icono></app-icono>
   </div>
 
-  <div class="form text-align">
+  <div class="form">
     <div class="mb-5">
       <app-enlace [url]="'http://localhost:3000/' + shortUrl"></app-enlace>
     </div>
@@ -14,23 +14,23 @@
       ></app-qr-code>
     </div>
 
-    <div class="display-flex justify-evenly margin-button">
+    <div class="display-flex justify-evenly lg:margin-button">
       <button
         (click)="generateQrCode()"
         type="submit"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center"
       >
         Generar QR
       </button>
       <button
         (click)="goToAcortado()"
         type="submit"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center"
       >
-        Acortar URL
+        Volver Inicio
       </button>
 
-      
+
     </div>
   </div>
 </div>
