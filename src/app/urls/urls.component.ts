@@ -37,4 +37,15 @@ export class UrlsComponent implements OnInit{
     this.dropdownUrl = null;
   }
 
+  exportUrlsToFile(): void {
+    const lines = this.savedUrls.map(url => `Short URL: http://localhost:3000/${url.shortUrl}, Original URL: ${url.originalUrl}`);
+    const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'saved_urls.txt';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
+
 }
